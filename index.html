@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="AgroLens — кишеньковий агроном зі штучним інтелектом. Діагностика хвороб рослин за фото, догляд за кімнатними рослинами та господарством.">
+  <meta name="theme-color" content="#0E2A1C">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="AgroLens">
+  <title>AgroLens — бачити рослину наскрізь</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-mode="farm" data-theme="light">
+
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora__blob aurora__blob--mint"></span>
+    <span class="aurora__blob aurora__blob--amber"></span>
+    <span class="aurora__blob aurora__blob--green"></span>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div id="boot" class="boot">
+    <div class="boot__mark" aria-hidden="true">
+      <svg viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="27" stroke="currentColor" stroke-width="1.4" opacity=".35"/>
+        <circle cx="32" cy="32" r="20" stroke="currentColor" stroke-width="1.4" opacity=".6"/>
+        <path d="M32 13c9 5 14 13 14 21 0 8-5 14-14 17-9-3-14-9-14-17 0-8 5-16 14-21Z" fill="currentColor" opacity=".16"/>
+        <path d="M32 15c8 5 12 12 12 19 0 7-4 12-12 15-8-3-12-8-12-15 0-7 4-14 12-19Z" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M32 18v31M32 31l-7-6M32 38l8-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <p class="boot__name">AgroLens</p>
+    <p class="boot__hint">наводимо фокус…</p>
+  </div>
+
+  <div class="app" id="app" hidden>
+    <aside class="sidebar">
+      <a class="brand" href="#/home" aria-label="AgroLens — на головну">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none">
+            <rect x="1" y="1" width="38" height="38" rx="13" fill="url(#brandGrad)"/>
+            <path d="M20 8c6.5 3.6 10 8.6 10 14 0 5.4-3.6 9.6-10 11.6C13.6 31.6 10 27.4 10 22c0-5.4 3.5-10.4 10-14Z" stroke="#DFF3E4" stroke-width="1.5"/>
+            <path d="M20 10.5V32M20 21l-5.5-4.6M20 26l6-5" stroke="#DFF3E4" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="30.5" cy="10.5" r="2.6" fill="#E9A23B"/>
+            <defs>
+              <linearGradient id="brandGrad" x1="2" y1="2" x2="38" y2="38">
+                <stop stop-color="#2C6B48"/><stop offset="1" stop-color="#12321F"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="brand__text">
+          <strong>AgroLens</strong>
+          <small>plant intelligence</small>
+        </span>
+      </a>
+
+      <div class="mode-switch" role="group" aria-label="Режим застосунку">
+        <button class="mode-switch__btn is-active" data-mode-set="farm" type="button">
+          <span class="mode-switch__dot"></span> Ферма
+        </button>
+        <button class="mode-switch__btn" data-mode-set="home" type="button">
+          <span class="mode-switch__dot"></span> Дім
+        </button>
+      </div>
+
+      <nav class="nav" id="nav-desktop" aria-label="Головна навігація"></nav>
+
+      <div class="sidebar__foot">
+        <a class="ai-chip" href="#/settings" data-ai-chip>
+          <span class="ai-chip__pulse"></span>
+          <span class="ai-chip__text">
+            <strong data-ai-chip-title>Демо-режим</strong>
+            <small data-ai-chip-sub>Підключити Gemini</small>
+          </span>
+          <span class="ai-chip__arrow" data-icon="arrow-up-right"></span>
+        </a>
+        <div class="user-card">
+          <span class="user-card__avatar">МР</span>
+          <span class="user-card__text">
+            <strong>Микола Романюк</strong>
+            <small>Фермер · 12,4 га</small>
+          </span>
+          <button class="icon-btn icon-btn--ghost" data-action="toggle-theme" aria-label="Змінити тему" data-icon="moon"></button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <a class="topbar__brand" href="#/home" aria-label="AgroLens">
+          <span class="topbar__mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none"><rect x="1" y="1" width="38" height="38" rx="13" fill="#143826"/><path d="M20 8c6.5 3.6 10 8.6 10 14 0 5.4-3.6 9.6-10 11.6C13.6 31.6 10 27.4 10 22c0-5.4 3.5-10.4 10-14Z" stroke="#DFF3E4" stroke-width="1.5"/><path d="M20 10.5V32M20 21l-5.5-4.6M20 26l6-5" stroke="#DFF3E4" stroke-width="1.4" stroke-linecap="round"/><circle cx="30.5" cy="10.5" r="2.6" fill="#E9A23B"/></svg>
+          </span>
+          <strong>AgroLens</strong>
+        </a>
+        <div class="topbar__meta">
+          <span class="status-pill" data-net-status>
+            <span class="status-pill__dot"></span>
+            <span data-net-label>Онлайн</span>
+          </span>
+          <button class="status-pill status-pill--ai" data-ai-top type="button" data-action="go-settings">
+            <span class="status-pill__spark" data-icon="sparkles"></span>
+            <span data-ai-top-label>Демо</span>
+          </button>
+          <button class="icon-btn" data-action="toggle-theme" aria-label="Змінити тему" data-icon="moon"></button>
+          <button class="icon-btn topbar__more" data-action="open-more" aria-label="Більше" data-icon="more"></button>
+          <span class="avatar" aria-hidden="true">МР</span>
+        </div>
+      </header>
+
+      <main class="view" id="view" tabindex="-1"></main>
+    </div>
+
+    <nav class="tabbar" id="tabbar" aria-label="Мобільна навігація"></nav>
+  </div>
+
+  <div class="sheet-root" id="sheet-root" aria-live="polite"></div>
+  <div class="modal-root" id="modal-root"></div>
+  <div class="toast-root" id="toast-root" aria-live="polite"></div>
+
+  <noscript>
+    <div class="noscript">Для роботи AgroLens увімкніть JavaScript у браузері.</div>
+  </noscript>
+
+  <script src="js/icons.js"></script>
+  <script src="js/art.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/views.js"></script>
+  <script src="js/views-main.js"></script>
+  <script src="js/views-app.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
